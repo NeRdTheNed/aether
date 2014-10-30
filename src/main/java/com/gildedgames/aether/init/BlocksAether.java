@@ -6,6 +6,7 @@ import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.block.natural.BlockAetherDirt;
 import com.gildedgames.aether.block.natural.BlockAetherGrass;
 import com.gildedgames.aether.block.natural.BlockHolystone;
+import com.gildedgames.aether.block.natural.BlockIcestone;
 import com.gildedgames.aether.block.natural.BlockQuicksoil;
 
 public class BlocksAether
@@ -19,7 +20,9 @@ public class BlocksAether
 	
 	aetherGrass = new BlockAetherGrass().setCreativeTab(CreativeTabsAether.blocksNatural),
 	
-	quicksoil = new BlockQuicksoil().setCreativeTab(CreativeTabsAether.blocksNatural);
+	quicksoil = new BlockQuicksoil().setCreativeTab(CreativeTabsAether.blocksNatural),
+	
+	icestone = new BlockIcestone().setCreativeTab(CreativeTabsAether.blocksNatural);
 	
 	public static void register()
 	{
@@ -27,6 +30,7 @@ public class BlocksAether
 		Aether.registerBlock(BlocksAether.aetherDirt, "aetherDirt");
 		Aether.registerBlock(BlocksAether.aetherGrass, "aetherGrass");
 		Aether.registerBlock(BlocksAether.quicksoil, "quicksoil");
+		Aether.registerBlock(BlocksAether.icestone, "icestone");
 	}
 	
 }
