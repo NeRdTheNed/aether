@@ -3,6 +3,7 @@ package com.gildedgames.aether.init;
 import net.minecraft.block.Block;
 
 import com.gildedgames.aether.Aether;
+import com.gildedgames.aether.block.natural.BlockAercloud;
 import com.gildedgames.aether.block.natural.BlockAetherDirt;
 import com.gildedgames.aether.block.natural.BlockAetherGrass;
 import com.gildedgames.aether.block.natural.BlockHolystone;
@@ -22,7 +23,9 @@ public class BlocksAether
 	
 	quicksoil = new BlockQuicksoil().setCreativeTab(CreativeTabsAether.blocksNatural),
 	
-	icestone = new BlockIcestone().setCreativeTab(CreativeTabsAether.blocksNatural);
+	icestone = new BlockIcestone().setCreativeTab(CreativeTabsAether.blocksNatural),
+	
+	aercloud = new BlockAercloud().setCreativeTab(CreativeTabsAether.blocksNatural);
 	
 	public static void register()
 	{
@@ -31,6 +34,7 @@ public class BlocksAether
 		Aether.registerBlock(BlocksAether.aetherGrass, "aetherGrass");
 		Aether.registerBlock(BlocksAether.quicksoil, "quicksoil");
 		Aether.registerBlock(BlocksAether.icestone, "icestone");
+		Aether.registerBlock(BlocksAether.aercloud, "aercloud");
 	}
 	
 }
