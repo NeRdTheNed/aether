@@ -20,6 +20,8 @@ public class BlockAetherGrass extends Block
 	
 	public static IIcon ICON_TOP, ICON_SIDE;
 	
+	public static final int LIGHT_TO_GROW = 9, LIGHT_TO_DIE = 4;
+	
 	public BlockAetherGrass()
 	{
 		super(Material.grass);
@@ -65,9 +67,9 @@ public class BlockAetherGrass extends Block
 		Block blockAbove = world.getBlock(x, y + 1, z);
 		int lightValueAbove = world.getBlockLightValue(x, y + 1, z);
 		
-		if (lightValueAbove < 4 && blockAbove.getMaterial().getCanBlockGrass())
+		if (lightValueAbove < LIGHT_TO_DIE && blockAbove.getMaterial().getCanBlockGrass())
 		{
-			boolean chanceToStay = rand.nextInt(4) != 0;
+			final boolean chanceToStay = rand.nextInt(4) != 0;
 			
 			if (chanceToStay || blockAbove instanceof BlockWall)
 			{
@@ -76,7 +78,7 @@ public class BlockAetherGrass extends Block
 			
 			world.setBlock(x, y, z, BlocksAether.aetherDirt);
 		}
-		else if (world.getBlockLightValue(x, y + 1, z) >= 9)
+		else if (world.getBlockLightValue(x, y + 1, z) >= LIGHT_TO_GROW)
 		{
 			int x1 = x + rand.nextInt(3) - 1;
 			int y1 = y + rand.nextInt(5) - 3;
@@ -87,7 +89,7 @@ public class BlockAetherGrass extends Block
 			blockAbove = world.getBlock(x1, y1 + 1, z1);
 			lightValueAbove = world.getBlockLightValue(x1, y1 + 1, z1);
 			
-			if (blockNearby == BlocksAether.aetherDirt && lightValueAbove >= 4 && !blockAbove.getMaterial().getCanBlockGrass())
+			if (blockNearby == BlocksAether.aetherDirt && lightValueAbove >= LIGHT_TO_DIE && !blockAbove.getMaterial().getCanBlockGrass())
 			{
 				world.setBlock(x1, y1, z1, BlocksAether.aetherGrass);
 			}
