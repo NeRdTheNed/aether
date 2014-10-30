@@ -1,3 +1,5 @@
 tile.holystone.name=Holystone
 tile.aetherDirt.name=Aether Dirt
 tile.aetherGrass.name=Aether Grass
+tile.quicksoil.name=Quicksoil
+itemGroup.blocksNatural=Natural Aether Blocks
