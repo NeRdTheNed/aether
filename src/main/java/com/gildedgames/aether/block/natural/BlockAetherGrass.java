@@ -20,7 +20,7 @@ public class BlockAetherGrass extends Block
 	
 	public static IIcon ICON_TOP, ICON_SIDE;
 	
-	public static final int LIGHT_TO_GROW = 9, LIGHT_TO_DIE = 4;
+	public static final int REQUIRED_LIGHT = 9, MINIMUM_LIGHT = 4, MAX_OPACITY = 2;
 	
 	public BlockAetherGrass()
 	{
@@ -66,8 +66,9 @@ public class BlockAetherGrass extends Block
 		
 		Block blockAbove = world.getBlock(x, y + 1, z);
 		int lightValueAbove = world.getBlockLightValue(x, y + 1, z);
+		int lightOpacityAbove = world.getBlockLightOpacity(x, y + 1, z);
 		
-		if (lightValueAbove < LIGHT_TO_DIE && blockAbove.getMaterial().getCanBlockGrass())
+		if (lightValueAbove < MINIMUM_LIGHT && lightOpacityAbove > MAX_OPACITY)
 		{
 			final boolean chanceToStay = rand.nextInt(4) != 0;
 			
@@ -78,21 +79,25 @@ public class BlockAetherGrass extends Block
 			
 			world.setBlock(x, y, z, BlocksAether.aetherDirt);
 		}
-		else if (lightValueAbove >= LIGHT_TO_GROW)
+		else if (lightValueAbove >= REQUIRED_LIGHT)
 		{
-			int x1 = x + rand.nextInt(3) - 1;
-			int y1 = y + rand.nextInt(5) - 3;
-			int z1 = z + rand.nextInt(3) - 1;
-			
-			Block blockNearby = world.getBlock(x1, y1, z1);
-			
-			blockAbove = world.getBlock(x1, y1 + 1, z1);
-			lightValueAbove = world.getBlockLightValue(x1, y1 + 1, z1);
-			
-			if (blockNearby == BlocksAether.aetherDirt && lightValueAbove >= LIGHT_TO_DIE && !blockAbove.getMaterial().getCanBlockGrass())
-			{
-				world.setBlock(x1, y1, z1, BlocksAether.aetherGrass);
-			}
+			for (int growCount = 0; growCount < 4; ++growCount)
+            {
+				int x1 = x + rand.nextInt(3) - 1;
+				int y1 = y + rand.nextInt(5) - 3;
+				int z1 = z + rand.nextInt(3) - 1;
+				
+				Block blockNearby = world.getBlock(x1, y1, z1);
+				
+				blockAbove = world.getBlock(x1, y1 + 1, z1);
+				lightValueAbove = world.getBlockLightValue(x1, y1 + 1, z1);
+				lightOpacityAbove = world.getBlockLightOpacity(x1, y1 + 1, z1);
+				
+				if (blockNearby == BlocksAether.aetherDirt && lightValueAbove >= MINIMUM_LIGHT && lightOpacityAbove <= MAX_OPACITY)
+				{
+					world.setBlock(x1, y1, z1, BlocksAether.aetherGrass);
+				}
+            }
 		}
 	}
 	
