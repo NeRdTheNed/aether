@@ -13,5 +13,6 @@ gradlew.bat
 *.db
 *.php
 *.iml
+*.txt
 
 /.idea/
