@@ -13,7 +13,7 @@ public class BlocksAether
 	
 	public static void register()
 	{
-		Aether.registerBlock(holystone, "holystone");
+		Aether.registerBlock(BlocksAether.holystone, "holystone");
 	}
 	
 }
