@@ -78,7 +78,7 @@ public class BlockAetherGrass extends Block
 			
 			world.setBlock(x, y, z, BlocksAether.aetherDirt);
 		}
-		else if (world.getBlockLightValue(x, y + 1, z) >= LIGHT_TO_GROW)
+		else if (lightValueAbove >= LIGHT_TO_GROW)
 		{
 			int x1 = x + rand.nextInt(3) - 1;
 			int y1 = y + rand.nextInt(5) - 3;
