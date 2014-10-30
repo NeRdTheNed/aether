@@ -43,12 +43,15 @@ public class BlockAetherGrass extends Block
 	@Override
 	public IIcon getIcon(int side, int meta)
 	{
-		if (side == 1)
+		final int TOP = 1;
+		final int BOTTOM = 0;
+		
+		if (side == TOP)
 		{
 			return BlockAetherGrass.ICON_TOP;
 		}
 
-		if (side == 0)
+		if (side == BOTTOM)
 		{
 			return BlocksAether.aetherDirt.getIcon(side, meta);
 		}
