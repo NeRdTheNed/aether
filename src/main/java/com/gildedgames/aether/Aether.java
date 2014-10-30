@@ -29,7 +29,7 @@ public class Aether
 	public static ServerProxy proxy;
 	
 	/**
-	 * Returns the game's current networking side.
+	 * Returns the game's current networking Side.
 	 */
 	public static Side getAppState()
 	{
@@ -37,7 +37,7 @@ public class Aether
 	}
 
 	/**
-	 * Returns whether the game's state is Client side or not.
+	 * Returns whether the game's state is Client-Side or not.
 	 */
 	public static boolean isClient()
 	{
@@ -45,7 +45,7 @@ public class Aether
 	}
 
 	/**
-	 * Returns whether the game's state is Server side or not.
+	 * Returns whether the game's state is Server-Side or not.
 	 */
 	public static boolean isServer()
 	{
