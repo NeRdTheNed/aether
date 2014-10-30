@@ -34,7 +34,7 @@ public class BlockAetherGrass extends Block
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-		String iconName = Aether.getTextureName("aetherGrass");
+		String iconName = Aether.modAddress() + "aetherGrass";
 		
 		BlockAetherGrass.ICON_TOP = iconRegister.registerIcon(iconName + "_top");
 		BlockAetherGrass.ICON_SIDE = iconRegister.registerIcon(iconName + "_side");

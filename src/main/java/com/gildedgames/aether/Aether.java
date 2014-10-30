@@ -67,7 +67,7 @@ public class Aether
 	public static void registerBlock(Block block, String name)
 	{
 		block.setBlockName(name);
-		block.setBlockTextureName(Aether.getTextureName(name));
+		block.setBlockTextureName(Aether.modAddress() + name);
 		
 		GameRegistry.registerBlock(block, name);
 	}
@@ -80,19 +80,18 @@ public class Aether
 	public static void registerItem(Item item, String name)
 	{
 		item.setUnlocalizedName(name);
-		item.setTextureName(Aether.getTextureName(name));
+		item.setTextureName(Aether.modAddress() + name);
 		
 		GameRegistry.registerItem(item, name);
 	}
 	
 	/**
-	 * Used to return a mod-friendly texture name for Blocks and Items.
-	 * @param name The name of the texture's parent object
-	 * @return The object name with the Mod address attached
+	 * Used to represent that a particular ResourceLocation is assigned to the Aether mod.
+	 * @return The appropriate address for the Aether mod
 	 */
-	public static String getTextureName(String name)
+	public static String modAddress()
 	{
-		return Aether.MOD_ID + ":" + name;
+		return Aether.MOD_ID + ":";
 	}
 	
 }
