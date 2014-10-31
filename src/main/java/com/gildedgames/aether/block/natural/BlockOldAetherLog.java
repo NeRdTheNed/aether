@@ -15,6 +15,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import com.gildedgames.aether.Aether;
+import com.gildedgames.aether.init.BlocksAether;
 import com.gildedgames.aether.init.ItemsAether;
 
 import cpw.mods.fml.relauncher.Side;
@@ -25,8 +26,29 @@ public class BlockOldAetherLog extends BlockLog
 	
 	public static enum Type
 	{
-		SKYROOT("skyroot"),
-		GOLDEN_OAK("goldenOak");
+		SKYROOT("skyroot")
+		{
+			
+			@Override
+			public ArrayList<ItemStack> getDrops(World world, Random rand, ArrayList<ItemStack> originalDrops)
+			{
+				return originalDrops;
+			}
+			
+		},
+		GOLDEN_OAK("goldenOak")
+		{
+			@Override
+			public ArrayList<ItemStack> getDrops(World world, Random rand, ArrayList<ItemStack> originalDrops)
+			{
+				ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
+				
+				drops.add(new ItemStack(ItemsAether.goldenAmber, MathHelper.getRandomIntegerInRange(rand, 2, 4)));
+				drops.add(new ItemStack(BlocksAether.aetherLog));
+				
+				return drops;
+			}
+		};
 		
 		protected String name;
 		
@@ -39,6 +61,8 @@ public class BlockOldAetherLog extends BlockLog
 		{
 			return this.name;
 		}
+		
+		public abstract ArrayList<ItemStack> getDrops(World world, Random rand, ArrayList<ItemStack> originalDrops);
 		
 	}
 	
@@ -57,9 +81,21 @@ public class BlockOldAetherLog extends BlockLog
 		this.setStepSound(Block.soundTypeWood);
 	}
 	
-    public static int getMetadataBit(int metadata)
+    public int getMetadataBit(int metadata)
     {
         return metadata & (Type.values().length - 1);
+    }
+    
+    public Type getType(int metadata)
+    {
+    	final int metadataBit = this.getMetadataBit(metadata);
+    	
+    	if (metadataBit < Type.values().length)
+    	{
+    		return Type.values()[metadataBit];
+    	}
+    	
+    	return Type.SKYROOT;
     }
 
     @SideOnly(Side.CLIENT)
@@ -97,15 +133,10 @@ public class BlockOldAetherLog extends BlockLog
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
     {
-    	ArrayList<ItemStack> drops = super.getDrops(world, x, y, z, metadata, fortune);
-    	final int blockMetadata = this.getMetadataBit(metadata);
+    	ArrayList<ItemStack> originalDrops = super.getDrops(world, x, y, z, metadata, fortune);
+    	final Type logType = this.getType(metadata);
 
-    	if (blockMetadata < Type.values().length && Type.values()[blockMetadata] == Type.GOLDEN_OAK)
-    	{
-    		drops.add(new ItemStack(ItemsAether.goldenAmber, MathHelper.getRandomIntegerInRange(this.rand, 2, 4)));
-    	}
-    	
-    	return drops;
+    	return logType.getDrops(world, this.rand, originalDrops);
     }
 
 }

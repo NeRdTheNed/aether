@@ -127,6 +127,7 @@ public class BlocksAether
 		BlocksAether.zaniteOre.setHarvestLevel("pickaxe", 1);
 		BlocksAether.gravititeOre.setHarvestLevel("pickaxe", 2);
 		BlocksAether.continuumOre.setHarvestLevel("pickaxe", 3);
+		BlocksAether.aetherLog.setHarvestLevel("axe", 0);
 		
 		Aether.registerBlock(BlocksAether.holystone, "holystone");
 		Aether.registerBlock(BlocksAether.aetherDirt, "aetherDirt");
