@@ -1,6 +1,7 @@
 package com.gildedgames.aether.block.natural;
 
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -180,7 +181,7 @@ public class BlockAercloud extends Block
 					entity.motionX *= 0.0000000005D;
 					entity.motionZ *= 0.0000000005D;
 	
-					int chance = world.rand.nextInt(4);
+					int chance = rand.nextInt(4);
 	
 					if (chance == 0)
 					{
@@ -254,6 +255,8 @@ public class BlockAercloud extends Block
 			}
 			
 		};
+		
+		private static Random rand;
 		
 		private static GameSettings settings = Minecraft.getMinecraft().gameSettings;
 		
