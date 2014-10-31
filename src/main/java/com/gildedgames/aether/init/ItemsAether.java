@@ -3,6 +3,7 @@ package com.gildedgames.aether.init;
 import net.minecraft.item.Item;
 
 import com.gildedgames.aether.Aether;
+import com.gildedgames.aether.items.materials.ItemAmbrosiumShard;
 import com.gildedgames.aether.items.materials.ItemContinuumOrb;
 
 public class ItemsAether
@@ -10,7 +11,7 @@ public class ItemsAether
 	
 	public static final Item
 	
-	ambrosiumShard = new Item().setCreativeTab(CreativeTabsAether.materials),
+	ambrosiumShard = new ItemAmbrosiumShard().setCreativeTab(CreativeTabsAether.materials),
 	
 	zaniteGemstone = new Item().setCreativeTab(CreativeTabsAether.materials),
 	

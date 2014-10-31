@@ -26,38 +26,19 @@ public class BlockAercloud extends Block
 	
 	public static enum Type
 	{
-		COLD
+		COLD("aercloudCold")
 		{
-			
-			private IIcon icon, opaqueIcon;
-			
+
 			@Override
 			public int[] getMetadata()
 			{
 				return new int[] { 0 };
 			}
-			
-			@Override
-			public void registerBlockIcons(IIconRegister iconRegister)
-			{
-				String iconName = Aether.modAddress() + "aercloudCold";
-				
-				this.icon = iconRegister.registerIcon(iconName);
-				this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
-			}
-			
-			@Override
-			public IIcon getIcon(int side, int blockMetadata)
-			{
-				return settings.fancyGraphics ? this.icon : this.opaqueIcon;
-			}
 
 		},
-		BLUE
+		BLUE("aercloudBlue")
 		{
-			
-			private IIcon icon, opaqueIcon;
-			
+
 			@Override
 			public int[] getMetadata()
 			{
@@ -111,27 +92,10 @@ public class BlockAercloud extends Block
 				return AxisAlignedBB.getBoundingBox(x, y, z, x, y, z);
 			}
 			
-			@Override
-			public void registerBlockIcons(IIconRegister iconRegister)
-			{
-				String iconName = Aether.modAddress() + "aercloudBlue";
-				
-				this.icon = iconRegister.registerIcon(iconName);
-				this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
-			}
-			
-			@Override
-			public IIcon getIcon(int side, int blockMetadata)
-			{
-				return settings.fancyGraphics ? this.icon : this.opaqueIcon;
-			}
-			
 		},
-		GOLDEN
+		GOLDEN("aercloudGolden")
 		{
-			
-			private IIcon icon, opaqueIcon;
-			
+
 			@Override
 			public int[] getMetadata()
 			{
@@ -157,27 +121,10 @@ public class BlockAercloud extends Block
 				return AxisAlignedBB.getBoundingBox(x, y, z, x, y, z);
 			}
 			
-			@Override
-			public void registerBlockIcons(IIconRegister iconRegister)
-			{
-				String iconName = Aether.modAddress() + "aercloudGolden";
-				
-				this.icon = iconRegister.registerIcon(iconName);
-				this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
-			}
-			
-			@Override
-			public IIcon getIcon(int side, int blockMetadata)
-			{
-				return settings.fancyGraphics ? this.icon : this.opaqueIcon;
-			}
-			
 		},
-		GREEN
+		GREEN("aercloudGreen")
 		{
-			
-			private IIcon icon, opaqueIcon;
-			
+
 			@Override
 			public int[] getMetadata()
 			{
@@ -223,55 +170,30 @@ public class BlockAercloud extends Block
 				return AxisAlignedBB.getBoundingBox(x, y, z, x, y, z);
 			}
 			
-			@Override
-			public void registerBlockIcons(IIconRegister iconRegister)
-			{
-				String iconName = Aether.modAddress() + "aercloudGreen";
-				
-				this.icon = iconRegister.registerIcon(iconName);
-				this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
-			}
-			
-			@Override
-			public IIcon getIcon(int side, int blockMetadata)
-			{
-				return settings.fancyGraphics ? this.icon : this.opaqueIcon;
-			}
-			
 		},
-		STORM
+		STORM("aercloudStorm")
 		{
-			
-			private IIcon icon, opaqueIcon;
-			
+
 			@Override
 			public int[] getMetadata()
 			{
 				return new int[] { 4 };
 			}
 
-			@Override
-			public void registerBlockIcons(IIconRegister iconRegister)
-			{
-				String iconName = Aether.modAddress() + "aercloudStorm";
-				
-				this.icon = iconRegister.registerIcon(iconName);
-				this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
-			}
-
-			@Override
-			public IIcon getIcon(int side, int blockMetadata)
-			{
-				return settings.fancyGraphics ? this.icon : this.opaqueIcon;
-			}
-			
 		};
 		
 		private static Random rand = new Random();
 		
 		private static GameSettings settings = Minecraft.getMinecraft().gameSettings;
+
+		protected IIcon icon, opaqueIcon;
+
+		protected String name;
 		
-		public abstract int[] getMetadata();
+		Type(String name)
+		{
+			this.name = name;
+		}
 
 		public void onEntityCollide(World world, Entity entity, int x, int y, int z)
 		{
@@ -306,12 +228,23 @@ public class BlockAercloud extends Block
 				}
 			}
 				
-			return Type.COLD;
+			return Type.values()[0];
 		}
 
-		public abstract void registerBlockIcons(IIconRegister iconRegister);
+		public void registerBlockIcons(IIconRegister iconRegister)
+		{
+			String iconName = Aether.modAddress() + this.name;
+			
+			this.icon = iconRegister.registerIcon(iconName);
+			this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
+		}
 
-		public abstract IIcon getIcon(int side, int blockMetadata);
+		public IIcon getIcon(int side, int blockMetadata)
+		{
+			return settings.fancyGraphics ? this.icon : this.opaqueIcon;
+		}
+		
+		public abstract int[] getMetadata();
 	}
 
 	public BlockAercloud()

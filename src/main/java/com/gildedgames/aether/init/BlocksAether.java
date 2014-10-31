@@ -131,7 +131,7 @@ public class BlocksAether
 		
 		Aether.registerBlock(BlocksAether.holystone, "holystone");
 		Aether.registerBlock(BlocksAether.aetherDirt, "aetherDirt");
-		Aether.registerBlock(BlocksAether.aetherGrass, "aetherGrass");
+		Aether.registerBlock(BlocksAether.aetherGrass, ItemBlockSubtypes.class, "aetherGrass");
 		Aether.registerBlock(BlocksAether.quicksoil, "quicksoil");
 		Aether.registerBlock(BlocksAether.icestone, "icestone");
 		Aether.registerBlock(BlocksAether.aercloud, ItemBlockSubtypes.class, "aercloud");
