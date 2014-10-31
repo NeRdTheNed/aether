@@ -224,7 +224,7 @@ public class BlockAetherGrass extends Block
 		{
 			if (world.isRemote)
 			{
-				for (int l = 0; l < 6; l++)
+				for (int count = 0; count < 6; count++)
 				{
 					
 					//FMLClientHandler.instance().getClient().effectRenderer.addEffect(obj);
