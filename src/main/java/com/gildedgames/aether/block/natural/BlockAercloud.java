@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -26,7 +27,7 @@ public class BlockAercloud extends Block
 		COLD
 		{
 			
-			private IIcon icon;
+			private IIcon icon, opaqueIcon;
 			
 			@Override
 			public int[] getMetadata()
@@ -37,20 +38,23 @@ public class BlockAercloud extends Block
 			@Override
 			public void registerBlockIcons(IIconRegister iconRegister)
 			{
-				this.icon = iconRegister.registerIcon(Aether.modAddress() + "aercloudCold");
+				String iconName = Aether.modAddress() + "aercloudCold";
+				
+				this.icon = iconRegister.registerIcon(iconName);
+				this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
 			}
 			
 			@Override
 			public IIcon getIcon(int side, int blockMetadata)
 			{
-				return this.icon;
+				return Minecraft.getMinecraft().gameSettings.fancyGraphics ? this.icon : this.opaqueIcon;
 			}
 
 		},
 		BLUE
 		{
 			
-			private IIcon icon;
+			private IIcon icon, opaqueIcon;
 			
 			@Override
 			public int[] getMetadata()
@@ -97,20 +101,23 @@ public class BlockAercloud extends Block
 			@Override
 			public void registerBlockIcons(IIconRegister iconRegister)
 			{
-				this.icon = iconRegister.registerIcon(Aether.modAddress() + "aercloudBlue");
+				String iconName = Aether.modAddress() + "aercloudBlue";
+				
+				this.icon = iconRegister.registerIcon(iconName);
+				this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
 			}
 			
 			@Override
 			public IIcon getIcon(int side, int blockMetadata)
 			{
-				return this.icon;
+				return Minecraft.getMinecraft().gameSettings.fancyGraphics ? this.icon : this.opaqueIcon;
 			}
 			
 		},
 		GOLDEN
 		{
 			
-			private IIcon icon;
+			private IIcon icon, opaqueIcon;
 			
 			@Override
 			public int[] getMetadata()
@@ -140,20 +147,23 @@ public class BlockAercloud extends Block
 			@Override
 			public void registerBlockIcons(IIconRegister iconRegister)
 			{
-				this.icon = iconRegister.registerIcon(Aether.modAddress() + "aercloudGolden");
+				String iconName = Aether.modAddress() + "aercloudGolden";
+				
+				this.icon = iconRegister.registerIcon(iconName);
+				this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
 			}
 			
 			@Override
 			public IIcon getIcon(int side, int blockMetadata)
 			{
-				return this.icon;
+				return Minecraft.getMinecraft().gameSettings.fancyGraphics ? this.icon : this.opaqueIcon;
 			}
 			
 		},
 		GREEN
 		{
 			
-			private IIcon icon;
+			private IIcon icon, opaqueIcon;
 			
 			@Override
 			public int[] getMetadata()
@@ -203,20 +213,23 @@ public class BlockAercloud extends Block
 			@Override
 			public void registerBlockIcons(IIconRegister iconRegister)
 			{
-				this.icon = iconRegister.registerIcon(Aether.modAddress() + "aercloudGreen");
+				String iconName = Aether.modAddress() + "aercloudGreen";
+				
+				this.icon = iconRegister.registerIcon(iconName);
+				this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
 			}
 			
 			@Override
 			public IIcon getIcon(int side, int blockMetadata)
 			{
-				return this.icon;
+				return Minecraft.getMinecraft().gameSettings.fancyGraphics ? this.icon : this.opaqueIcon;
 			}
 			
 		},
 		STORM
 		{
 			
-			private IIcon icon;
+			private IIcon icon, opaqueIcon;
 			
 			@Override
 			public int[] getMetadata()
@@ -227,13 +240,16 @@ public class BlockAercloud extends Block
 			@Override
 			public void registerBlockIcons(IIconRegister iconRegister)
 			{
-				this.icon = iconRegister.registerIcon(Aether.modAddress() + "aercloudStorm");
+				String iconName = Aether.modAddress() + "aercloudStorm";
+				
+				this.icon = iconRegister.registerIcon(iconName);
+				this.opaqueIcon = iconRegister.registerIcon(iconName + "_opaque");
 			}
 
 			@Override
 			public IIcon getIcon(int side, int blockMetadata)
 			{
-				return this.icon;
+				return Minecraft.getMinecraft().gameSettings.fancyGraphics ? this.icon : this.opaqueIcon;
 			}
 			
 		};
