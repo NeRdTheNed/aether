@@ -38,7 +38,15 @@ public class BlocksAether
 	
 	skyrootPlank = new BlockSkyrootPlank().setCreativeTab(CreativeTabsAether.blocksConstruction),
 	
-	greenSkyrootLeaves = new BlockAetherLeaves().setCreativeTab(CreativeTabsAether.blocksFoliage);
+	greenSkyrootLeaves = new BlockAetherLeaves().setCreativeTab(CreativeTabsAether.blocksFoliage),
+	
+	blueSkyrootLeaves = new BlockAetherLeaves().setCreativeTab(CreativeTabsAether.blocksFoliage),
+	
+	darkBlueSkyrootLeaves = new BlockAetherLeaves().setCreativeTab(CreativeTabsAether.blocksFoliage),
+	
+	goldenOakLeaves = new BlockAetherLeaves().setCreativeTab(CreativeTabsAether.blocksFoliage),
+	
+	purpleCrystalLeaves = new BlockAetherLeaves().setCreativeTab(CreativeTabsAether.blocksFoliage);
 	
 	public static void register()
 	{
@@ -52,6 +60,10 @@ public class BlocksAether
 		Aether.registerBlock(BlocksAether.aetherLog, ItemBlockSubtypes.class, "aetherLog");
 		Aether.registerBlock(BlocksAether.skyrootPlank, "skyrootPlank");
 		Aether.registerBlock(BlocksAether.greenSkyrootLeaves, "greenSkyrootLeaves");
+		Aether.registerBlock(BlocksAether.blueSkyrootLeaves, "blueSkyrootLeaves");
+		Aether.registerBlock(BlocksAether.darkBlueSkyrootLeaves, "darkBlueSkyrootLeaves");
+		Aether.registerBlock(BlocksAether.goldenOakLeaves, "goldenOakLeaves");
+		Aether.registerBlock(BlocksAether.purpleCrystalLeaves, "purpleCrystalLeaves");
 	}
 	
 }
