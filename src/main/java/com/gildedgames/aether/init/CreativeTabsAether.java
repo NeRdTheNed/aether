@@ -30,4 +30,15 @@ public class CreativeTabsAether
         
     };
 	
+    public static final CreativeTabs blocksFoliage = new CreativeTabs("blocksFoliage")
+    {
+    	
+        @SideOnly(Side.CLIENT)
+        public Item getTabIconItem()
+        {
+            return Item.getItemFromBlock(BlocksAether.greenSkyrootLeaves);
+        }
+        
+    };
+	
 }

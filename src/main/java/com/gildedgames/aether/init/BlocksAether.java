@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 
 import com.gildedgames.aether.Aether;
 import com.gildedgames.aether.block.construction.BlockSkyrootPlank;
+import com.gildedgames.aether.block.foliage.BlockAetherLeaves;
 import com.gildedgames.aether.block.natural.BlockAercloud;
 import com.gildedgames.aether.block.natural.BlockAerogel;
 import com.gildedgames.aether.block.natural.BlockAetherDirt;
@@ -35,7 +36,9 @@ public class BlocksAether
 	
 	aetherLog = new BlockOldAetherLog().setCreativeTab(CreativeTabsAether.blocksNatural),
 	
-	skyrootPlank = new BlockSkyrootPlank().setCreativeTab(CreativeTabsAether.blocksConstruction);
+	skyrootPlank = new BlockSkyrootPlank().setCreativeTab(CreativeTabsAether.blocksConstruction),
+	
+	greenSkyrootLeaves = new BlockAetherLeaves().setCreativeTab(CreativeTabsAether.blocksFoliage);
 	
 	public static void register()
 	{
@@ -48,6 +51,7 @@ public class BlocksAether
 		Aether.registerBlock(BlocksAether.aerogel, "aerogel");
 		Aether.registerBlock(BlocksAether.aetherLog, ItemBlockSubtypes.class, "aetherLog");
 		Aether.registerBlock(BlocksAether.skyrootPlank, "skyrootPlank");
+		Aether.registerBlock(BlocksAether.greenSkyrootLeaves, "greenSkyrootLeaves");
 	}
 	
 }
