@@ -53,7 +53,7 @@ public class BlocksAether
 	
 	purpleCrystalLeaves = new BlockAetherLeaves().setCreativeTab(CreativeTabsAether.blocksFoliage),
 	
-	ambrosiumOre = new BlockAetherOre()
+	ambrosiumOre = new BlockAetherOre(ItemsAether.ambrosiumShard)
 	{
 		
 		@Override
@@ -70,7 +70,7 @@ public class BlocksAether
 		
 	},
 	
-	zaniteOre = new BlockAetherOre()
+	zaniteOre = new BlockAetherOre(ItemsAether.zaniteGemstone)
 	{
 		
 		@Override
@@ -104,7 +104,7 @@ public class BlocksAether
 		
 	},
 	
-	continuumOre = new BlockAetherOre()
+	continuumOre = new BlockAetherOre(ItemsAether.continuumOrb)
 	{
 		
 		@Override

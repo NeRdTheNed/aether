@@ -1,8 +1,8 @@
 package com.gildedgames.aether.block.natural;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import com.gildedgames.aether.Aether;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
@@ -11,6 +11,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
+
+import com.gildedgames.aether.Aether;
+import com.gildedgames.aether.init.ItemsAether;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -40,6 +46,8 @@ public class BlockOldAetherLog extends BlockLog
     protected IIcon[] sideIcons;
     @SideOnly(Side.CLIENT)
     protected IIcon[] topIcons;
+    
+    protected Random rand = new Random();
 
 	public BlockOldAetherLog()
 	{
@@ -49,9 +57,9 @@ public class BlockOldAetherLog extends BlockLog
 		this.setStepSound(Block.soundTypeWood);
 	}
 	
-    public static int func_150165_c(int metadata)
+    public static int getMetadataBit(int metadata)
     {
-        return metadata & 1;
+        return metadata & (Type.values().length - 1);
     }
 
     @SideOnly(Side.CLIENT)
@@ -84,6 +92,20 @@ public class BlockOldAetherLog extends BlockLog
             this.sideIcons[type.ordinal()] = iconRegister.registerIcon(Aether.modAddress() + type.getName() + "_side");
             this.topIcons[type.ordinal()] = iconRegister.registerIcon(Aether.modAddress() + type.getName() + "_top");
         }
+    }
+    
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+    {
+    	ArrayList<ItemStack> drops = super.getDrops(world, x, y, z, metadata, fortune);
+    	final int blockMetadata = this.getMetadataBit(metadata);
+
+    	if (blockMetadata < Type.values().length && Type.values()[blockMetadata] == Type.GOLDEN_OAK)
+    	{
+    		drops.add(new ItemStack(ItemsAether.goldenAmber, MathHelper.getRandomIntegerInRange(this.rand, 2, 4)));
+    	}
+    	
+    	return drops;
     }
 
 }

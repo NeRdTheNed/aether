@@ -1,6 +1,7 @@
 itemGroup.blocksNatural=Natural Aether Blocks
 itemGroup.blocksConstruction=Construction Aether Blocks
 itemGroup.blocksFoliage=Foliage Aether Blocks
+itemGroup.aetherMaterials=Aether Materials
 tile.holystone.name=Holystone
 tile.aetherDirt.name=Aether Dirt
 tile.aetherGrass.name=Aether Grass
@@ -24,3 +25,7 @@ tile.ambrosiumOre.name=Ambrosium Ore
 tile.zaniteOre.name=Zanite Ore
 tile.gravititeOre.name=Gravitite Ore
 tile.continuumOre.name=Continuum Ore
+item.ambrosiumShard.name=Ambrosium Shard
+item.zaniteGemstone.name=Zanite Gemstone
+item.continuumOrb.name=Continuum Orb
+item.goldenAmber.name=Golden Amber

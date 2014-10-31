@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
 import com.gildedgames.aether.init.BlocksAether;
+import com.gildedgames.aether.init.ItemsAether;
 import com.gildedgames.aether.server.ServerProxy;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -58,6 +59,7 @@ public class Aether
 	public void load(FMLInitializationEvent event)
 	{
 		BlocksAether.register();
+		ItemsAether.register();
 	}
 	
 	/** 

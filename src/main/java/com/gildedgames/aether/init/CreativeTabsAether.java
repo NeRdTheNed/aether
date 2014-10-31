@@ -40,5 +40,16 @@ public class CreativeTabsAether
         }
         
     };
+    
+    public static final CreativeTabs materials = new CreativeTabs("aetherMaterials")
+    {
+    	
+        @SideOnly(Side.CLIENT)
+        public Item getTabIconItem()
+        {
+            return ItemsAether.ambrosiumShard;
+        }
+        
+    };
 	
 }
