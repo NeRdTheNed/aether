@@ -74,6 +74,17 @@ public class BlockAercloud extends Block
 					if (Aether.isClient() && !(entity instanceof EntityFX))
 					{
 						entity.motionY = 2.0D;
+						
+						final int splashAmount = 50;
+						
+						for (int count = 0; count < splashAmount; count++)
+						{
+							double xOffset = x + rand.nextDouble();
+							double yOffset = y + rand.nextDouble();
+							double zOffset = z + rand.nextDouble();
+
+							world.spawnParticle("splash", xOffset, yOffset, zOffset, 0, 0, 0);
+						}
 					}
 	
 					if (entity instanceof EntityPlayer)
@@ -256,7 +267,7 @@ public class BlockAercloud extends Block
 			
 		};
 		
-		private static Random rand;
+		private static Random rand = new Random();
 		
 		private static GameSettings settings = Minecraft.getMinecraft().gameSettings;
 		
