@@ -61,24 +61,31 @@ public class BlockAercloud extends Block
 			@Override
 			public void onEntityCollide(World world, Entity entity, int x, int y, int z)
 			{
-				entity.motionY = 2.0D;
-
-				if (Aether.isClient() && !(entity instanceof EntityFX))
+				if (!entity.isRiding() && !entity.isSneaking())
 				{
 					entity.motionY = 2.0D;
-				}
 
-				if (entity instanceof EntityPlayer)
-				{
-					EntityPlayer player = (EntityPlayer) entity;
-
-					if (player.capabilities.isFlying)
+					if (Aether.isClient() && !(entity instanceof EntityFX))
 					{
-						return;
+						entity.motionY = 2.0D;
 					}
+	
+					if (entity instanceof EntityPlayer)
+					{
+						EntityPlayer player = (EntityPlayer) entity;
+	
+						if (player.capabilities.isFlying)
+						{
+							return;
+						}
+					}
+	
+					world.playSoundAtEntity(entity, "aether:aemisc.aercloud", 0.35F, world.rand.nextFloat());
 				}
-
-				world.playSoundAtEntity(entity, "aether:aemisc.aercloud", 0.35F, world.rand.nextFloat());
+				else
+				{
+					super.onEntityCollide(world, entity, x, y, z);
+				}
 			}
 			
 			@Override
@@ -114,7 +121,14 @@ public class BlockAercloud extends Block
 			@Override
 			public void onEntityCollide(World world, Entity entity, int x, int y, int z)
 			{
-				entity.motionY = -1.5D;
+				if (!entity.isRiding() && !entity.isSneaking())
+				{
+					entity.motionY = -1.5D;
+				}
+				else
+				{
+					super.onEntityCollide(world, entity, x, y, z);
+				}
 			}
 			
 			@Override
@@ -150,26 +164,33 @@ public class BlockAercloud extends Block
 			@Override
 			public void onEntityCollide(World world, Entity entity, int x, int y, int z)
 			{
-				entity.motionX *= 0.0000000005D;
-				entity.motionZ *= 0.0000000005D;
-
-				int chance = world.rand.nextInt(4);
-
-				if (chance == 0)
+				if (!entity.isRiding() && !entity.isSneaking())
 				{
-					entity.motionZ = -2.5D;
+					entity.motionX *= 0.0000000005D;
+					entity.motionZ *= 0.0000000005D;
+	
+					int chance = world.rand.nextInt(4);
+	
+					if (chance == 0)
+					{
+						entity.motionZ = -2.5D;
+					}
+					else if (chance == 1)
+					{
+						entity.motionX = +2.5D;
+					}
+					else if (chance == 2)
+					{
+						entity.motionZ = +2.5D;
+					}
+					else if (chance == 3)
+					{
+						entity.motionX = -2.5D;
+					}
 				}
-				else if (chance == 1)
+				else
 				{
-					entity.motionX = +2.5D;
-				}
-				else if (chance == 2)
-				{
-					entity.motionZ = +2.5D;
-				}
-				else if (chance == 3)
-				{
-					entity.motionX = -2.5D;
+					super.onEntityCollide(world, entity, x, y, z);
 				}
 			}
 			
@@ -295,9 +316,17 @@ public class BlockAercloud extends Block
 	}
 	
 	@Override
+	public int damageDropped(int meta)
+	{
+		return meta;
+	}
+	
+	@Override
 	public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int x, int y, int z, int side)
 	{
-		return false;
+		Block block = iblockaccess.getBlock(x, y, z);
+		
+		return !(block == this || (!iblockaccess.isAirBlock(x, y, z) && block.isOpaqueCube()));
 	}
 	
 	@Override

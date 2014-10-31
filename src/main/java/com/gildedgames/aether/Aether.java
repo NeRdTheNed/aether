@@ -2,6 +2,7 @@ package com.gildedgames.aether;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 
 import com.gildedgames.aether.init.BlocksAether;
 import com.gildedgames.aether.server.ServerProxy;
@@ -70,6 +71,20 @@ public class Aether
 		block.setBlockTextureName(Aether.modAddress() + name);
 		
 		GameRegistry.registerBlock(block, name);
+	}
+	
+	/** 
+	 * Wrapper for registering a Block, can be safely changed at a later date. Should always be used to register Blocks within the Aether.
+	 * @param block The Block you want to register in Minecraft
+	 * @param itemBlock The ItemBlock used to represent the ItemStack of this Block
+	 * @param name The unlocalized name of the Block you're registering
+	 */
+	public static void registerBlock(Block block, Class<? extends ItemBlock> itemBlock, String name)
+	{
+		block.setBlockName(name);
+		block.setBlockTextureName(Aether.modAddress() + name);
+		
+		GameRegistry.registerBlock(block, itemBlock, name);
 	}
 	
 	/** 

@@ -9,6 +9,7 @@ import com.gildedgames.aether.block.natural.BlockAetherGrass;
 import com.gildedgames.aether.block.natural.BlockHolystone;
 import com.gildedgames.aether.block.natural.BlockIcestone;
 import com.gildedgames.aether.block.natural.BlockQuicksoil;
+import com.gildedgames.aether.item.itemblock.ItemBlockSubtypes;
 
 public class BlocksAether
 {
@@ -34,7 +35,7 @@ public class BlocksAether
 		Aether.registerBlock(BlocksAether.aetherGrass, "aetherGrass");
 		Aether.registerBlock(BlocksAether.quicksoil, "quicksoil");
 		Aether.registerBlock(BlocksAether.icestone, "icestone");
-		Aether.registerBlock(BlocksAether.aercloud, "aercloud");
+		Aether.registerBlock(BlocksAether.aercloud, ItemBlockSubtypes.class, "aercloud");
 	}
 	
 }
