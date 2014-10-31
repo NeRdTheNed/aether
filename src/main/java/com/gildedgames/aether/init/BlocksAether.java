@@ -3,12 +3,14 @@ package com.gildedgames.aether.init;
 import net.minecraft.block.Block;
 
 import com.gildedgames.aether.Aether;
+import com.gildedgames.aether.block.construction.BlockSkyrootPlank;
 import com.gildedgames.aether.block.natural.BlockAercloud;
 import com.gildedgames.aether.block.natural.BlockAerogel;
 import com.gildedgames.aether.block.natural.BlockAetherDirt;
 import com.gildedgames.aether.block.natural.BlockAetherGrass;
 import com.gildedgames.aether.block.natural.BlockHolystone;
 import com.gildedgames.aether.block.natural.BlockIcestone;
+import com.gildedgames.aether.block.natural.BlockOldAetherLog;
 import com.gildedgames.aether.block.natural.BlockQuicksoil;
 import com.gildedgames.aether.item.itemblock.ItemBlockSubtypes;
 
@@ -29,7 +31,11 @@ public class BlocksAether
 	
 	aercloud = new BlockAercloud().setCreativeTab(CreativeTabsAether.blocksNatural),
 	
-	aerogel = new BlockAerogel().setCreativeTab(CreativeTabsAether.blocksNatural);
+	aerogel = new BlockAerogel().setCreativeTab(CreativeTabsAether.blocksNatural),
+	
+	aetherLog = new BlockOldAetherLog().setCreativeTab(CreativeTabsAether.blocksNatural),
+	
+	skyrootPlank = new BlockSkyrootPlank().setCreativeTab(CreativeTabsAether.blocksConstruction);
 	
 	public static void register()
 	{
@@ -40,6 +46,8 @@ public class BlocksAether
 		Aether.registerBlock(BlocksAether.icestone, "icestone");
 		Aether.registerBlock(BlocksAether.aercloud, ItemBlockSubtypes.class, "aercloud");
 		Aether.registerBlock(BlocksAether.aerogel, "aerogel");
+		Aether.registerBlock(BlocksAether.aetherLog, ItemBlockSubtypes.class, "aetherLog");
+		Aether.registerBlock(BlocksAether.skyrootPlank, "skyrootPlank");
 	}
 	
 }

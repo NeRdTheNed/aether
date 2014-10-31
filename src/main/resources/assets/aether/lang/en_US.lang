@@ -1,4 +1,5 @@
 itemGroup.blocksNatural=Natural Aether Blocks
+itemGroup.blocksConstruction=Construction Aether Blocks
 tile.holystone.name=Holystone
 tile.aetherDirt.name=Aether Dirt
 tile.aetherGrass.name=Aether Grass
@@ -10,3 +11,6 @@ tile.aercloud2.name=Golden Aercloud
 tile.aercloud3.name=Green Aercloud
 tile.aercloud4.name=Storm Aercloud
 tile.aerogel.name=Aerogel
+tile.aetherLog0.name=Skyroot Log
+tile.aetherLog1.name=Golden Oak Log
+tile.skyrootPlank.name=Skyroot Plank

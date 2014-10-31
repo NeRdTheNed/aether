@@ -18,5 +18,16 @@ public class CreativeTabsAether
         }
         
     };
+    
+    public static final CreativeTabs blocksConstruction = new CreativeTabs("blocksConstruction")
+    {
+    	
+        @SideOnly(Side.CLIENT)
+        public Item getTabIconItem()
+        {
+            return Item.getItemFromBlock(BlocksAether.skyrootPlank);
+        }
+        
+    };
 	
 }
