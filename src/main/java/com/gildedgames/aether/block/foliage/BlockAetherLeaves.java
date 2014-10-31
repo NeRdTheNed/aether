@@ -30,8 +30,8 @@ public class BlockAetherLeaves extends BlockLeaves
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		this.normalIcon = iconRegister.registerIcon(this.getUnlocalizedName());
-		this.opaqueIcon = iconRegister.registerIcon(this.getUnlocalizedName() + "_opaque");
+		this.normalIcon = iconRegister.registerIcon(this.getTextureName());
+		this.opaqueIcon = iconRegister.registerIcon(this.getTextureName() + "_opaque");
 	}
 
 	@Override
